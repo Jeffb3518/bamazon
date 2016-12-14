@@ -24,3 +24,12 @@ connection.query("SELECT * FROM products", function (err, res) {
   console.log(res);
 });
 connection.end();
+
+var runSearch = function() {
+  inquirer.prompt({
+    name: "action",
+    type: "list",
+    message: "What product ID would you like to buy?",
+    choices: ["Find songs by artist", "Find all artists who appear more than once",
+      "Find data within a specific range", "Search for a specific song"]
+  }).then(function(answer) {

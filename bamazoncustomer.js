@@ -26,7 +26,7 @@ console.log("-----------------------------------");
 
 connection.end();
 
-var idSearch = function() {
+var start = function() {
     connection.query("SELECT * FROM products", function(err, res) {
     console.log(res);
   inquirer.prompt({
@@ -41,7 +41,7 @@ var idSearch = function() {
     },
     message: "What item ID would you like to purchase?"
   }).then(function(answer){
-    var query = "SELECT * FROM products WHERE?";
+    var query = "SELECT * FROM products WHERE ?";
       for (var i = 0; i < res.length; i++) {
         if (res[i].item_id === answer.choices) {
             var chosenItem = res[i];
@@ -52,5 +52,10 @@ var idSearch = function() {
     }).then(function(answer){
         for (var i = 0; i < res.length; i++) {
             if(answer === res[i].stock_quantity){
-                
-            }
+                connection.query("UPDATE stock_quantity ? WHERE ?");
+            } else{
+                consonle.log("Sorry, please select another quantity");
+            });
+        })
+    };
+        };

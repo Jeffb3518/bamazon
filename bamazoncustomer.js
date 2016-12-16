@@ -62,7 +62,14 @@ var start = function() {
         });
        }
        var inventory = function() {
-           connection.query("SELECT stock_quantity FROM products")
+           connection.query("SELECT stock_quantity FROM products"){
+               console.log(res);
+           }
+           for (var i = 0; i < res[i].stock_quantity; i--) {
+              console.log(stock_quantity);
+           };
+           start();
+       };
        }
       }
     });

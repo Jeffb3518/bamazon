@@ -1,13 +1,14 @@
 var mysql = require("mysql");
+var inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
 
-  // username
+
   user: "root",
 
-  // password
+
   password: "123",
   database: "Bamazon"
 });
@@ -52,10 +53,18 @@ var start = function() {
     }).then(function(answer){
         for (var i = 0; i < res.length; i++) {
             if(answer === res[i].stock_quantity){
-                connection.query("UPDATE stock_quantity ? WHERE ?");
+               console.log("Thank you for your selection");
+                start();
             } else{
                 consonle.log("Sorry, please select another quantity");
-            });
-        })
-    };
-        };
+                start();
+            }
+        });
+       }
+       var inventory = function() {
+           connection.query("SELECT stock_quantity FROM products")
+       }
+      }
+    });
+   });
+  };

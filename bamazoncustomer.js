@@ -18,18 +18,17 @@ connection.connect(function(err) {
 });
 
 connection.query("SELECT * FROM products", function (err, res) {
-  if (err) {
-    throw err;
-  }
-  console.log(res);
-});
-connection.end();
+  for (var i = 0; i < res.length; i++) {
+      console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity);
+}
+console.log("-----------------------------------");
+}); 
 
-var runSearch = function() {
-  inquirer.prompt({
-    name: "action",
-    type: "list",
-    message: "What product ID would you like to buy?",
-    choices: ["Find songs by artist", "Find all artists who appear more than once",
-      "Find data within a specific range", "Search for a specific song"]
-  }).then(function(answer) {
+// var idSearch = function() {
+//   inquirer.prompt({
+//     name: "action",
+//     type: "list",
+//     message: "What product ID would you like to buy?",
+//     choices: ["Find songs by artist", "Find all artists who appear more than once",
+//       "Find data within a specific range", "Search for a specific song"]
+//   }).then(function(answer) {
